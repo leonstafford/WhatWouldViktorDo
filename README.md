@@ -53,8 +53,15 @@ And run with `composer run-script whatwouldviktordo`. I like to have all code qu
   "@php74",
   "@phpstan",
   "@phpunit"
-        ],
+],
 ``` 
+
+## Development
+
+ - `git@github.com:leonstafford/WhatWouldViktorDo.git`
+ - `cd WhatWouldViktorDo`
+ - `composer install --ignore-platform-reqs` (workaround until upstream depency issue resolved)
+ - `composer run-script test`
 
 ## Roadmap
 

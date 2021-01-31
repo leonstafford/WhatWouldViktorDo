@@ -1,0 +1,68 @@
+{
+  "name": "leonstafford/whatwouldviktordo",
+  "description": "WordPress plugin quality auditor",
+  "homepage": "https://github.com/leonstafford/WhatWouldViktorDo/",
+  "license": "UNLICENSE",
+  "authors": [
+    {
+        "name": "Leon Stafford",
+        "email": "me@ljs.dev",
+        "homepage": "https://ljs.dev"
+    }
+  ],
+  "type": "library",
+  "support": {
+      "issues": "https://github.com/leonstafford/WhatWouldViktorDo/issues/",
+      "forum": "https://github.com/leonstafford/WhatWouldViktorDo/discussions/",
+      "docs": "https://github.com/leonstafford/WhatWouldViktorDo/",
+      "source": "https://github.com/leonstafford/WhatWouldViktorDo/"
+  },
+  "require": {
+    "php": "^7.3|^8.0"
+  },
+  "require-dev": {
+      "phpstan/phpstan-strict-rules": "*",
+      "squizlabs/php_codesniffer": "*",
+      "phpunit/phpunit": "*",
+      "pestphp/pest": "*",
+      "szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset": "*",
+      "dealerdirect/phpcodesniffer-composer-installer": "*",
+      "phpcompatibility/php-compatibility": "*",
+      "php-parallel-lint/php-parallel-lint": "*"
+  },
+  "autoload": {
+      "psr-4": {
+          "WhatWouldViktorDo\\": "src/"
+      }
+  },
+  "config": {
+      "preferred-install": {
+          "*": "dist"
+      },
+      "classmap-authoritative": true
+  },
+  "scripts": {
+      "whatwouldviktordo": "php ./bin/whatwouldviktordo audit",
+      "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
+      "phpcbf": "vendor/bin/phpcbf --standard=PSR12NeutronRuleset --ignore=*/js/*,*/tests/Unit/*,*/admin/*,*/coverage/*,*.js,*/vendor/* ./",
+      "phpcs":  "vendor/bin/phpcs --standard=PSR12NeutronRuleset --ignore=*/tests/Unit/*,*/admin/*,**/coverage/*,*.js,*/vendor/* ./",
+      "php73": "vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 7.3 --ignore=*/tests/Unit/*,*/admin/*,**/coverage/*,*.js,*/vendor/* ./",
+      "php74": "vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 7.4 --ignore=*/tests/Unit/*,*/admin/*,**/coverage/*,*.js,*/vendor/* ./",
+      "pest": "vendor/bin/pest",
+      "coverage": "vendor/bin/pest --coverage",
+      "lint": "vendor/bin/parallel-lint --exclude vendor .",
+
+      "test": [
+          "composer validate --strict",
+          "@lint",
+          "@phpcs",
+          "@php73",
+          "@php74",
+          "@phpstan",
+          "@pest"
+      ]
+  },
+  "bin": [
+    "bin/whatwouldviktordo"
+  ]
+}
