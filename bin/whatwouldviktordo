@@ -19,7 +19,7 @@ if (! class_exists(Auditor::class) && is_file(__DIR__ . '/../vendor/autoload.php
 }
 
 // TODO Check args for `audit`, print help message if not given.
-$projectDir = isset($argv[1]) ?? __DIR__ . '/..';
+$projectDir = $argv[1] ?? __DIR__ . '/..';
 
 $auditor = new Auditor($projectDir);
 $exitCode = $auditor->runAudit();
