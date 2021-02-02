@@ -44,11 +44,14 @@ class Auditor
 
     /**
      * Run the audit script.
+     *
+     * @return int Exit code 1: error 0: success.
      */
     public function runAudit(): int
     {
-        printf('TBD Running audit...');
-        return 0;
+        printf('Running audit...');
+
+        return (int)!$this->hasReadme();
     }
 
     /**
