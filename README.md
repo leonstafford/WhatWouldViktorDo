@@ -30,14 +30,14 @@ Add this package to your project.
 
 This is not a replacement for other code quality tools, like 
 
-`./vendor/bin/whatwouldviktordo audit`
+`./vendor/bin/whatwouldviktordo`
 
 or add as a Composer script:
 
 ```
 "scripts": {                                                                   
         "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
-        "phpstan": "./vendor/bin/whatwouldviktordo audit"
+        "phpstan": "./vendor/bin/whatwouldviktordo"
 }
 ```
 

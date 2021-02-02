@@ -43,7 +43,7 @@
       "classmap-authoritative": true
   },
   "scripts": {
-      "whatwouldviktordo": "php ./bin/whatwouldviktordo audit",
+      "whatwouldviktordo": "php ./bin/whatwouldviktordo",
       "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
       "phpcbf": "vendor/bin/phpcbf --standard=PSR12NeutronRuleset --ignore=*/js/*,*/tests/Unit/*,*/admin/*,*/coverage/*,*.js,*/vendor/* ./",
       "phpcs":  "vendor/bin/phpcs --standard=PSR12NeutronRuleset --ignore=*/tests/Unit/*,*/admin/*,**/coverage/*,*.js,*/vendor/* ./",
