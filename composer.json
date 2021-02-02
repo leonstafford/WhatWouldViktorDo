@@ -62,7 +62,8 @@
           "@lint",
           "@phpcs",
           "@phpstan",
-          "@pest"
+          "@pest",
+          "@coverage"
       ]
   },
   "bin": [
