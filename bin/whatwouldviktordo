@@ -21,8 +21,4 @@ if (! class_exists(Auditor::class) && is_file(__DIR__ . '/../vendor/autoload.php
     require_once __DIR__ . '/../vendor/autoload.php';
 }
 
-$projectDir = $argv[1] ?? __DIR__ . '/..';
-
-$auditor = new Auditor($projectDir);
-$exitCode = $auditor->runAudit();
-exit($exitCode);
+exit((new Auditor($argv[1] ?? __DIR__ . '/..'))->runAudit());
