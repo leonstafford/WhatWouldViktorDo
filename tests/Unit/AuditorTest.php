@@ -50,7 +50,7 @@ it(
 
         $auditor = new Auditor($this->projectDir->url());
 
-        $this->assertEquals($auditor->runAudit(), 1);
+        $this->assertEquals(1, $auditor->runAudit());
     }
 );
 
@@ -65,6 +65,6 @@ it(
 
         $auditor = new Auditor($this->projectDir->url());
 
-        $this->assertEquals($auditor->runAudit(), 0);
+        $this->assertEquals(0, $auditor->runAudit());
     }
 );

@@ -51,7 +51,7 @@ class Auditor
     {
         printf('Running audit...');
 
-        return (int)!$this->hasReadme();
+        return $this->hasReadme() ? 0 : 1;
     }
 
     /**
