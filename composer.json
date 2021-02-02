@@ -18,7 +18,7 @@
       "source": "https://github.com/leonstafford/WhatWouldViktorDo/"
   },
   "require": {
-    "php": "^7.4|^8.0"
+    "php": "^7.4 || ^8.0"
   },
   "repositories": [
     {
@@ -51,8 +51,8 @@
   "scripts": {
       "whatwouldviktordo": "php ./bin/whatwouldviktordo",
       "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
-      "phpcbf": "vendor/bin/phpcbf --standard=phpcs.xml .",
-      "phpcs":  "vendor/bin/phpcs --standard=phpcs.xml .",
+      "phpcbf": "vendor/bin/phpcbf --standard=phpcs.xml . bin/whatwouldviktordo",
+      "phpcs":  "vendor/bin/phpcs --standard=phpcs.xml . bin/whatwouldviktordo",
       "pest": "vendor/bin/pest",
       "coverage": "vendor/bin/pest --coverage",
       "lint": "vendor/bin/parallel-lint --exclude vendor .",

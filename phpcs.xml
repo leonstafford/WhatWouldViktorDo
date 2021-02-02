@@ -5,7 +5,7 @@
     <!-- Define targets for inspection  -->
     <file>src</file>
 
-    <!-- Requires 4.0 branch of phpcs -->
+    <!-- Requires 4.0 branch of phpcs & now only working via CLI -->
     <file>bin/whatwouldviktordo</file>
 
     <!-- Exclude Composer vendor packages -->
@@ -17,6 +17,7 @@
         <exclude name="ImportDetection.Imports.RequireImports"/>
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/>
         <exclude name="WordPress.WP.AlternativeFunctions"/>
+        <exclude name="Squiz.WhiteSpace.LanguageConstructSpacing"/>
     </rule>
 
     <rule ref="PHPCompatibility">
