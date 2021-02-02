@@ -30,14 +30,14 @@ Add this package to your project.
 
 This is not a replacement for other code quality tools, like 
 
-`./vendor/bin/whatwouldviktordo`
+`php ./vendor/bin/whatwouldviktordo`
 
 or add as a Composer script:
 
 ```
 "scripts": {                                                                   
         "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
-        "phpstan": "./vendor/bin/whatwouldviktordo"
+        "whatwouldviktordo": "php ./vendor/bin/whatwouldviktordo"
 }
 ```
 
@@ -62,6 +62,8 @@ And run with `composer run-script whatwouldviktordo`. I like to have all code qu
  - `cd WhatWouldViktorDo`
  - `composer install --ignore-platform-reqs` (workaround until upstream depency issue resolved)
  - `composer run-script test`
+
+While developing this project, you may directly use `./bin/` vs `./vendor/bin` in your scripts, ie: "php ./bin/whatwouldviktordo".
 
 ## Roadmap
 
