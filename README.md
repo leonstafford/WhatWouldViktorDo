@@ -2,7 +2,7 @@
 
 WordPress plugin quality auditor, inspired by all the great work by [Viktor Szepe](https://github.com/szepeviktor).
 
-I made this to help me audit [my multiple plugins](https://github.com/leonstafford). Immitation is the greatest form of flattery, so I'm stealing Viktor's ideas from things like [small project](https://github.com/szepeviktor/small-project) and other resources [Viktor has recommended](https://tomasvotruba.com/cleaning-lady-checklist/).
+I made this to help me audit [my multiple plugins](https://github.com/leonstafford). Imitation is the greatest form of flattery, so I'm stealing Viktor's ideas from things like [small project](https://github.com/szepeviktor/small-project) and other resources [Viktor has recommended](https://tomasvotruba.com/cleaning-lady-checklist/).
 
 I struggle to maintain manual checklists or keep up to date with things, so automating out this kind of auditing is something I dearly need. I hope it can help some other developers benefit and improve code quality, so this is available on [Packagist](https://packagist.org/packages/whatwouldviktordo/), but will start quite opinionated in what I want to audit my projects for.
 
