@@ -30,12 +30,12 @@
       "phpstan/phpstan-strict-rules": "*",
       "squizlabs/php_codesniffer": "dev-master",
       "phpunit/phpunit": "*",
-      "pestphp/pest": "*",
+      "pestphp/pest": "^1.0.1",
       "szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset": "*",
       "dealerdirect/phpcodesniffer-composer-installer": "*",
       "phpcompatibility/php-compatibility": "*",
       "php-parallel-lint/php-parallel-lint": "*",
-    "mikey179/vfsstream": "^1.6"
+      "mikey179/vfsstream": "*"
   },
   "autoload": {
       "psr-4": {
