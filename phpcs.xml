@@ -2,8 +2,13 @@
 <ruleset name="WhatWouldViktorDoCodingStyle">
     <description>Inspired by @szepeviktor's ruleset.</description>
 
-    <file>bin</file>
+    <!-- Define targets for inspection  -->
     <file>src</file>
+
+    <!-- Requires 4.0 branch of phpcs -->
+    <file>bin/whatwouldviktordo</file>
+
+    <!-- Exclude Composer vendor packages -->
     <exclude-pattern>./vendor/</exclude-pattern>
 
     <rule ref="PSR12NeutronRuleset">
@@ -18,6 +23,7 @@
       <config name="testVersion" value="7.4-"/>
     </rule>
 
+    <!-- Pest test cases have $this magically set -->
     <rule ref="PHPCompatibility.FunctionDeclarations.NewClosure">
         <exclude-pattern>/tests/Unit/*\.php</exclude-pattern>
     </rule>
