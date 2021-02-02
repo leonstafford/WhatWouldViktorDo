@@ -13,8 +13,14 @@ declare(strict_types=1);
 
 namespace WhatWouldViktorDo;
 
-it('asserts true is true', function () {
-    $this->assertTrue(true);
+use org\bovigo\vfs\vfsStream,
+    org\bovigo\vfs\vfsStreamDirectory;
 
-    expect(true)->toBeTrue();
+it('fails when no README.md in project', function () {
+    $this->project_dir = vfsStream::setup('project_dir');
+
+    $auditor   = new Auditor($this->project_dir);
+    $exitCode = $auditor->hasReadme();
+
+    $this->assertEquals(1, $exitCode);
 });
