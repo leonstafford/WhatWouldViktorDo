@@ -1,7 +1,12 @@
 #!/usr/bin/env php
 <?php
 /**
- * WhatWouldViktorDo audits a WordPress plugin's quality .
+ * WhatWouldViktorDo audits a WordPress plugin's quality.
+ *
+ * @package           WhatWouldViktorDo
+ * @author            Leon Stafford <me@ljs.dev>
+ * @license           The Unlicense
+ * @link              https://unlicense.org
  */
 
 declare(strict_types=1);
@@ -13,9 +18,9 @@ if (! class_exists(Auditor::class) && is_file(__DIR__ . '/../vendor/autoload.php
     require_once __DIR__ . '/../vendor/autoload.php';
 }
 
-// TODO: check args for `audit`, print help message if not given
-$projectDir = isset($argv[1]) ? $argv[1] : __DIR__ . '/..';
+// TODO Check args for `audit`, print help message if not given.
+$projectDir = isset($argv[1]) ?? __DIR__ . '/..';
 
-$auditor   = new Auditor($projectDir);
+$auditor = new Auditor($projectDir);
 $exitCode = $auditor->runAudit();
-exit( $exitCode);
+exit($exitCode);
