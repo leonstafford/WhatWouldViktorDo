@@ -18,7 +18,7 @@
       "source": "https://github.com/leonstafford/WhatWouldViktorDo/"
   },
   "require": {
-    "php": "^7.3|^8.0"
+    "php": "^7.4|^8.0"
   },
   "require-dev": {
       "phpstan/phpstan-strict-rules": "*",
@@ -47,7 +47,6 @@
       "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
       "phpcbf": "vendor/bin/phpcbf --standard=PSR12NeutronRuleset --ignore=*/js/*,*/tests/Unit/*,*/admin/*,*/coverage/*,*.js,*/vendor/* ./",
       "phpcs":  "vendor/bin/phpcs --standard=PSR12NeutronRuleset --ignore=*/tests/Unit/*,*/admin/*,**/coverage/*,*.js,*/vendor/* ./",
-      "php73": "vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 7.3 --ignore=*/tests/Unit/*,*/admin/*,**/coverage/*,*.js,*/vendor/* ./",
       "php74": "vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 7.4 --ignore=*/tests/Unit/*,*/admin/*,**/coverage/*,*.js,*/vendor/* ./",
       "pest": "vendor/bin/pest",
       "coverage": "vendor/bin/pest --coverage",
