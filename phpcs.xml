@@ -11,5 +11,14 @@
         <exclude name="NeutronStandard.Functions.TypeHint.NoReturnType"/>
         <exclude name="ImportDetection.Imports.RequireImports"/>
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/>
+        <exclude name="WordPress.WP.AlternativeFunctions"/>
+    </rule>
+
+    <rule ref="PHPCompatibility">
+      <config name="testVersion" value="7.4-"/>
+    </rule>
+
+    <rule ref="PHPCompatibility.FunctionDeclarations.NewClosure">
+        <exclude-pattern>/tests/Unit/*\.php</exclude-pattern>
     </rule>
 </ruleset>

@@ -47,7 +47,6 @@
       "phpstan": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
       "phpcbf": "vendor/bin/phpcbf --standard=phpcs.xml .",
       "phpcs":  "vendor/bin/phpcs --standard=phpcs.xml .",
-      "php74": "vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 7.4 ./",
       "pest": "vendor/bin/pest",
       "coverage": "vendor/bin/pest --coverage",
       "lint": "vendor/bin/parallel-lint --exclude vendor .",
@@ -56,8 +55,6 @@
           "composer validate --strict",
           "@lint",
           "@phpcs",
-          "@php73",
-          "@php74",
           "@phpstan",
           "@pest"
       ]
