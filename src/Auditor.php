@@ -55,6 +55,18 @@ class Auditor
     }
 
     /**
+     * Checks a file in the project.
+     *
+     * @param int|bool|null $permissions we optionally want to check for.
+     */
+    public function hasFile(string $path, ?string $contents, $permissions): bool
+    {
+        return file_exists($this->projectDir . $path) &&
+            (isset($contents) ? $contents === file_get_contents($this->projectDir . $path) : true) &&
+            (isset($permissions) ? $permissions === fileperms($this->projectDir . $path) : true);
+    }
+
+    /**
      * Check for README.md.
      */
     public function hasReadme(): bool
