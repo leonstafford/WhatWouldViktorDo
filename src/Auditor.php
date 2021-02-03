@@ -61,4 +61,12 @@ class Auditor
     {
         return file_exists($this->projectDir . '/README.md');
     }
+
+    /**
+     * Check for LICENSE.md.
+     */
+    public function hasLicense(): bool
+    {
+        return file_exists($this->projectDir . '/LICENSE.md');
+    }
 }
