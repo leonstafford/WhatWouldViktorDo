@@ -35,11 +35,18 @@
       "dealerdirect/phpcodesniffer-composer-installer": "*",
       "phpcompatibility/php-compatibility": "*",
       "php-parallel-lint/php-parallel-lint": "*",
+      "mockery/mockery": "*",
       "mikey179/vfsstream": "*"
   },
   "autoload": {
       "psr-4": {
           "WhatWouldViktorDo\\": "src/"
+      }
+  },
+  "autoload-dev": {
+      "psr-4": {
+          "WhatWouldViktorDo\\": "src/",
+          "WhatWouldViktorDo\\": "tests/Unit"
       }
   },
   "config": {

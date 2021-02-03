@@ -14,6 +14,10 @@ declare(strict_types=1);
 namespace WhatWouldViktorDo;
 
 use org\bovigo\vfs\vfsStream;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
+use Mockery as m;
+
+uses(MockeryTestCase::class);
 
 it(
     'fails when no README.md in project',
@@ -46,9 +50,12 @@ it(
 it(
     'fails when any parts of audit fails',
     function () {
-        $this->projectDir = vfsStream::setup('project_dir');
+        $testDouble = m::mock('Auditor');
+        $testDouble->shouldReceive('hasReadme')
+            ->andReturn(false);
 
-        $auditor = new Auditor($this->projectDir->url());
+        $this->projectDir = vfsStream::setup('project_dir');
+        $auditor = new Auditor(vfsStream::url('project_dir'));
 
         $this->assertEquals(1, $auditor->runAudit());
     }
@@ -57,12 +64,13 @@ it(
 it(
     'passes when all parts of audit succeed',
     function () {
+        $testDouble = m::mock('Auditor');
+        $testDouble->shouldReceive('hasReadme')
+            ->andReturn(true);
+
         $this->projectDir = vfsStream::setup('project_dir');
-
-        file_put_contents($this->projectDir->url() . '/README.md', 'anything');
-
         $auditor = new Auditor(vfsStream::url('project_dir'));
 
-        $this->assertEquals(0, $auditor->runAudit());
+        $this->assertEquals(1, $auditor->runAudit());
     }
 );
