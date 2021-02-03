@@ -43,10 +43,30 @@ it(
     }
 );
 
-/**
- * @runInSeparateProcess
- * @preserveGlobalState disabled
- */
+it(
+    'fails when no LICENSE.md in project',
+    function () {
+        $this->projectDir = vfsStream::setup('project_dir');
+
+        $auditor = new Auditor($this->projectDir->url());
+
+        $this->assertFalse($auditor->hasLicense());
+    }
+);
+
+it(
+    'passes when LICENSE.md is in project',
+    function () {
+        $this->projectDir = vfsStream::setup('project_dir');
+
+        file_put_contents($this->projectDir->url() . '/LICENSE.md', 'anything');
+
+        $auditor = new Auditor(vfsStream::url('project_dir'));
+
+        $this->assertTrue($auditor->hasLicense());
+    }
+);
+
 it(
     'fails when any parts of audit fails',
     function () {
