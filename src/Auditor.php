@@ -45,7 +45,7 @@ class Auditor
 
         return (
             $this->hasFile('/README.md') &&
-            $this->hasFile('/LICENSE.md')
+            $this->hasFile('/LICENSE')
             ) ? 0 : 1;
     }
 

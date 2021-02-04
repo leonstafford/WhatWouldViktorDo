@@ -44,26 +44,26 @@ it(
 );
 
 it(
-    'fails when no LICENSE.md in project',
+    'fails when no LICENSE in project',
     function () {
         $this->projectDir = vfsStream::setup('project_dir');
 
         $auditor = new Auditor($this->projectDir->url());
 
-        $this->assertFalse($auditor->hasFile('/LICENSE.md'));
+        $this->assertFalse($auditor->hasFile('/LICENSE'));
     }
 );
 
 it(
-    'passes when LICENSE.md is in project',
+    'passes when LICENSE is in project',
     function () {
         $this->projectDir = vfsStream::setup('project_dir');
 
-        file_put_contents($this->projectDir->url() . '/LICENSE.md', 'anything');
+        file_put_contents($this->projectDir->url() . '/LICENSE', 'anything');
 
         $auditor = new Auditor(vfsStream::url('project_dir'));
 
-        $this->assertTrue($auditor->hasFile('/LICENSE.md'));
+        $this->assertTrue($auditor->hasFile('/LICENSE'));
     }
 );
 
