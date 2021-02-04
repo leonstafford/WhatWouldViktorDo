@@ -9,7 +9,7 @@ I struggle to maintain manual checklists or keep up to date with things, so auto
 ## Features (planned/built)
 
  - [x] check for `README.md`
- - [ ] check for `LICENSE.md`
+ - [x] check for `LICENSE.md`
  - [ ] check for CI tooling (`.circle`, `.travis.yml`, `.github/workflows`)
  - [ ] check for `readme.txt` for wp.org publishing, including required fields/sections within
  - [ ] check `composer.json` (or vendor dir?) for `szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset`, `szepeviktor/phpstan-wordpress`, `composer validate --strict`

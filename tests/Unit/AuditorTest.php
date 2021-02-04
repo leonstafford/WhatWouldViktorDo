@@ -19,12 +19,6 @@ use Mockery as m;
 
 uses(MockeryTestCase::class);
 
-afterEach(
-    function () {
-        m::close();
-    }
-);
-
 it(
     'fails when no README.md in project',
     function () {
@@ -101,6 +95,6 @@ it(
             ->andReturn(true)
             ->times(2);
 
-        $this->assertEquals(1, $testDouble->runAudit());
+        $this->assertEquals(0, $testDouble->runAudit());
     }
 );
