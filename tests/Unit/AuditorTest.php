@@ -26,7 +26,7 @@ it(
 
         $auditor = new Auditor($this->projectDir->url());
 
-        $this->assertFalse($auditor->hasReadme());
+        $this->assertFalse($auditor->hasFile('/README.md'));
     }
 );
 
@@ -39,7 +39,7 @@ it(
 
         $auditor = new Auditor(vfsStream::url('project_dir'));
 
-        $this->assertTrue($auditor->hasReadme());
+        $this->assertTrue($auditor->hasFile('/README.md'));
     }
 );
 
@@ -50,7 +50,7 @@ it(
 
         $auditor = new Auditor($this->projectDir->url());
 
-        $this->assertFalse($auditor->hasLicense());
+        $this->assertFalse($auditor->hasFile('/LICENSE.md'));
     }
 );
 
@@ -63,7 +63,7 @@ it(
 
         $auditor = new Auditor(vfsStream::url('project_dir'));
 
-        $this->assertTrue($auditor->hasLicense());
+        $this->assertTrue($auditor->hasFile('/LICENSE.md'));
     }
 );
 
@@ -71,7 +71,8 @@ it(
     'fails when any parts of audit fails',
     function () {
         $testDouble = m::mock('Auditor');
-        $testDouble->shouldReceive('hasReadme')
+        $testDouble->shouldReceive('hasFile')
+            ->times(2)
             ->andReturn(false);
 
         $this->projectDir = vfsStream::setup('project_dir');

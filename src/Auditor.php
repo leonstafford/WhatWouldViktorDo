@@ -56,10 +56,8 @@ class Auditor
 
     /**
      * Checks a file in the project.
-     *
-     * @param int|bool|null $permissions we optionally want to check for.
      */
-    public function hasFile(string $path, ?string $contents, $permissions): bool
+    public function hasFile(string $path, ?string $contents = null, ?int $permissions = null): bool
     {
         return file_exists($this->projectDir . $path) &&
             (isset($contents) ? $contents === file_get_contents($this->projectDir . $path) : true) &&
