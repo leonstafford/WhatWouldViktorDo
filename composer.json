@@ -43,12 +43,6 @@
           "WhatWouldViktorDo\\": "src/"
       }
   },
-  "autoload-dev": {
-      "psr-4": {
-          "WhatWouldViktorDo\\": "src/",
-          "WhatWouldViktorDo\\": "tests/Unit"
-      }
-  },
   "config": {
       "preferred-install": {
           "*": "dist"
