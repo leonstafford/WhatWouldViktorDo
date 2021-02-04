@@ -29,16 +29,6 @@ class Auditor
     public function __construct(
         string $projectDir
     ) {
-        if ($projectDir === '') {
-            $err = 'No project directory received as input';
-            throw new \WhatWouldViktorDo\Exception($err);
-        }
-
-        if (! is_dir($projectDir)) {
-            $err = 'Invalid project directory received as input';
-            throw new \WhatWouldViktorDo\Exception($err);
-        }
-
         $this->projectDir = $projectDir;
     }
 
@@ -51,7 +41,30 @@ class Auditor
     {
         printf('Running audit...');
 
-        return $this->hasReadme() ? 0 : 1;
+        $this->validateProjectDir($this->projectDir);
+
+        return (
+            $this->hasFile('/README.md') &&
+            $this->hasFile('/LICENSE.md')
+            ) ? 0 : 1;
+    }
+
+    /**
+     * Validate the given project directory.
+     */
+    public function validateProjectDir(string $projectDir): bool
+    {
+        if ($projectDir === '') {
+            $err = 'Empty project directory received as input';
+            throw new \WhatWouldViktorDo\Exception($err);
+        }
+
+        if (! is_dir($projectDir)) {
+            $err = 'Invalid project directory received as input';
+            throw new \WhatWouldViktorDo\Exception($err);
+        }
+
+        return true;
     }
 
     /**
@@ -62,21 +75,5 @@ class Auditor
         return file_exists($this->projectDir . $path) &&
             (isset($contents) ? $contents === file_get_contents($this->projectDir . $path) : true) &&
             (isset($permissions) ? $permissions === fileperms($this->projectDir . $path) : true);
-    }
-
-    /**
-     * Check for README.md.
-     */
-    public function hasReadme(): bool
-    {
-        return file_exists($this->projectDir . '/README.md');
-    }
-
-    /**
-     * Check for LICENSE.md.
-     */
-    public function hasLicense(): bool
-    {
-        return file_exists($this->projectDir . '/LICENSE.md');
     }
 }

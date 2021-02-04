@@ -19,6 +19,12 @@ use Mockery as m;
 
 uses(MockeryTestCase::class);
 
+afterEach(
+    function () {
+        m::close();
+    }
+);
+
 it(
     'fails when no README.md in project',
     function () {
@@ -70,28 +76,31 @@ it(
 it(
     'fails when any parts of audit fails',
     function () {
-        $testDouble = m::mock('Auditor');
+        $testDouble = m::mock(Auditor::class, ['a_dir'])->makePartial();
+        $testDouble->shouldReceive('validateProjectDir')
+            ->andReturn(true);
+
         $testDouble->shouldReceive('hasFile')
-            ->times(2)
-            ->andReturn(false);
+            ->andReturn(false)
+            // only once, as first failed condition prevents further
+            ->once();
 
-        $this->projectDir = vfsStream::setup('project_dir');
-        $auditor = new Auditor(vfsStream::url('project_dir'));
-
-        $this->assertEquals(1, $auditor->runAudit());
+        $this->assertEquals(1, $testDouble->runAudit());
     }
 );
 
 it(
     'passes when all parts of audit succeed',
     function () {
-        $testDouble = m::mock('Auditor');
-        $testDouble->shouldReceive('hasReadme')
+        $testDouble = m::mock(Auditor::class, ['a_dir'])->makePartial();
+
+        $testDouble->shouldReceive('validateProjectDir')
             ->andReturn(true);
 
-        $this->projectDir = vfsStream::setup('project_dir');
-        $auditor = new Auditor(vfsStream::url('project_dir'));
+        $testDouble->shouldReceive('hasFile')
+            ->andReturn(true)
+            ->times(2);
 
-        $this->assertEquals(1, $auditor->runAudit());
+        $this->assertEquals(1, $testDouble->runAudit());
     }
 );
