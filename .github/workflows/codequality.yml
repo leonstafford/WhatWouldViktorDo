@@ -40,6 +40,10 @@ jobs:
 
     - name: Run our Linter and PHPStan
       run: composer run-script test
+
+    - name: Store coverage % for updating README
+      run: echo "::set-output name=NEW_COVERAGE::$(composer coverage | grep Cov | sed 's/Cov://' | xargs)"
+
   update-code-coverage:
     runs-on: ubuntu-latest
     name: Update project stats
@@ -50,5 +54,5 @@ jobs:
       uses: leonstafford/a11y-friendly-badges@master
       with:
         update_commands: >
-          NEW_COVERAGE="$(composer coverage | grep Cov | sed 's/Cov://' | xargs)" &&
+          echo "captured var: $NEW_COVERAGE" &&
           sed -i "s/Coverage:/c\Coverage: $NEW_COVERAGE" ./README.md
