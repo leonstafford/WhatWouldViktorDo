@@ -40,3 +40,15 @@ jobs:
 
     - name: Run our Linter and PHPStan
       run: composer run-script test
+  update-code-coverage:
+    runs-on: ubuntu-latest
+    name: Update project stats
+    steps:
+    - uses: actions/checkout@master
+    - name: Update version
+      id: update-badges
+      uses: leonstafford/a11y-friendly-badges@master
+      with:
+        update_commands: >
+          NEW_COVERAGE="$(composer coverage | grep Cov | sed 's/Cov://' | xargs)" &&
+          sed -i "s/Coverage:/c\Coverage: $NEW_COVERAGE" ./README.md
