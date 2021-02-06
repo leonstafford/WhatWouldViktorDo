@@ -48,7 +48,7 @@ jobs:
 
     - name: Modify README directly
       run: >
-        sed -i "s/Coverage:/c\Coverage: ${{ env.NEW_COVERAGE }}" ./README.md &&
+        sed -i "/Coverage:/ c Coverage:  ${{ env.NEW_COVERAGE }}" ./README.md &&
         cat README.md
 
 #   update-code-coverage:
