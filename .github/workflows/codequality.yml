@@ -46,16 +46,21 @@ jobs:
         NEW_COVERAGE="$(composer coverage | grep Cov | sed 's/Cov://' | xargs)" &&
         echo "NEW_COVERAGE=$NEW_COVERAGE" >> $GITHUB_ENV
 
-  update-code-coverage:
-    runs-on: ubuntu-latest
-    name: Update project stats
-    steps:
-    - uses: actions/checkout@master
-    - name: Update version
-      id: update-badges
-      uses: leonstafford/a11y-friendly-badges@master
-      with:
-        update_commands: >
-          echo "captured var: ${{ env.NEW_COVERAGE }}" &&
-          sed -i "s/Coverage:/c\Coverage: ${{ env.NEW_COVERAGE }}" ./README.md &&
-          cat ./README.md
+    - name: Modify README directly
+      run: >
+        sed -i "s/Coverage:/c\Coverage: ${{ env.NEW_COVERAGE }}" ./README.md &&
+        cat README.md
+
+#   update-code-coverage:
+#     runs-on: ubuntu-latest
+#     name: Update project stats
+#     steps:
+#     - uses: actions/checkout@master
+#     - name: Update version
+#       id: update-badges
+#       uses: leonstafford/a11y-friendly-badges@master
+#       with:
+#         update_commands: >
+#           echo "captured var: ${{ env.NEW_COVERAGE }}" &&
+#           sed -i "s/Coverage:/c\Coverage: ${{ env.NEW_COVERAGE }}" ./README.md &&
+#           cat ./README.md
