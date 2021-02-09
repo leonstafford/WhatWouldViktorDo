@@ -46,14 +46,13 @@ jobs:
 
     - name: Store coverage % for updating README
       run: >
-        NEW_COVERAGE="$(composer coverage | grep Cov | sed 's/Cov://' | xargs)" &&
-        echo "NEW_COVERAGE=$NEW_COVERAGE" >> $GITHUB_ENV
+        NEW_COVERAGE="$(composer coverage | grep Cov | sed 's/Cov://' | xargs)"
+#        NEW_COVERAGE="$(composer coverage | grep Cov | sed 's/Cov://' | xargs)" &&
+#        echo "NEW_COVERAGE=$NEW_COVERAGE" >> $GITHUB_ENV
 
     - name: Modify README directly
       run: >
-        echo "1 $NEW_COVERAGE" &&
-        echo "2 ${{ env.NEW_COVERAGE }}" &&
-        sed -i "/Coverage:/ c Coverage: ${{ env.NEW_COVERAGE }}" ./README.md &&
+        sed -i "/Coverage:/ c Coverage: $NEW_COVERAGE" ./README.md &&
         cat README.md
 
     - name: Commit files
