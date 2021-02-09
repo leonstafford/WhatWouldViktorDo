@@ -54,7 +54,8 @@ jobs:
         echo "1 $NEW_COVERAGE" &&
         echo "2 ${{ env.NEW_COVERAGE }}" &&
         cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" &&
-        cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" > NEWREADME.md &&
+        # strip color/escape sequences
+        cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" | sed 's/\x1b\[[0-9;]*m//g' > NEWREADME.md &&
         mv NEWREADME.md README.md
 
     - name: Commit files
