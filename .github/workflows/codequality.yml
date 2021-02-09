@@ -54,12 +54,12 @@ jobs:
         sed -i "/Coverage:/ c Coverage:  ${{ env.NEW_COVERAGE }}" ./README.md &&
         cat README.md
 
-   - name: Commit files
+    - name: Commit files
       run: |
         git config --local user.email "me@ljs.dev"
         git config --local user.name "Leon Stafford"
         git commit -m "Update project stats" -a
-   - name: Push changes
+    - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
