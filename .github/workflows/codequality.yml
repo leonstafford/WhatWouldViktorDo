@@ -54,8 +54,8 @@ jobs:
         echo "1 $NEW_COVERAGE" &&
         echo "2 ${{ env.NEW_COVERAGE }}" &&
         cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" &&
-        cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" > README.md &&
-        cat README.md
+        cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" > NEWREADME.md &&
+        mv NEWREADME.md README.md
 
     - name: Commit files
       run: |
