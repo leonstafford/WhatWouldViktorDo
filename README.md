@@ -2,7 +2,7 @@
 
 WordPress plugin quality auditor, inspired by all the great work by [Viktor Szepe](https://github.com/szepeviktor).
 
-Coverage: [37;1m [39;22m[39m58.82%[39m
+Coverage:  58.82%
 
 I made this to help me audit [my multiple plugins](https://github.com/leonstafford). Imitation is the greatest form of flattery, so I'm stealing Viktor's ideas from things like [small project](https://github.com/szepeviktor/small-project) and other resources [Viktor has recommended](https://tomasvotruba.com/cleaning-lady-checklist/).
 
