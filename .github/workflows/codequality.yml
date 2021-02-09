@@ -51,7 +51,9 @@ jobs:
 
     - name: Modify README directly
       run: >
-        sed -i "/Coverage:/ c Coverage:  \"${{ env.NEW_COVERAGE }}\"" ./README.md &&
+        echo "1 $NEW_COVERAGE" &&
+        echo "2 ${{ env.NEW_COVERAGE }}" &&
+        sed -i "/Coverage:/ c Coverage: ${{ env.NEW_COVERAGE }}" ./README.md &&
         cat README.md
 
     - name: Commit files
