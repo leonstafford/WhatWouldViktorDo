@@ -58,7 +58,7 @@ jobs:
       run: |
         git config --local user.email "me@ljs.dev"
         git config --local user.name "Leon Stafford"
-        git commit -m "Update project stats" -a
+        git commit -m "Update project stats" -a || echo "No project stats changes to commit"
     - name: Push changes
       if: matrix.php == '8.0'
       uses: ad-m/github-push-action@master
