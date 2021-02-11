@@ -61,11 +61,7 @@ jobs:
 #   update-code-coverage:
 #     runs-on: ubuntu-latest
 
-     name: Update project stats
-     steps:
-     - uses: actions/checkout@master
-     - name: Update version
-       id: update-badges
+    - name: Update project stats
        uses: leonstafford/a11y-friendly-badges@master
        with:
          update_commands: >
