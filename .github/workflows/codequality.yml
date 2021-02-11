@@ -45,23 +45,13 @@ jobs:
       run: composer run-script test
 
     - name: Store coverage % for updating README
+      if: matrix.php == '8.0'
       run: >
         NEW_COVERAGE="$(composer coverage | grep Cov | sed 's/Cov://' | xargs)" &&
         echo "NEW_COVERAGE=$NEW_COVERAGE" >> $GITHUB_ENV
 
-#    - name: Modify README directly
-#      # Note: stripping color/escape sequences from replaced output
-#      run: >
-#        echo "1 $NEW_COVERAGE" &&
-#        echo "2 ${{ env.NEW_COVERAGE }}" &&
-#        cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" &&
-#        cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" | sed 's/\x1b\[[0-9;]*m//g' > NEWREADME.md &&
-#        mv NEWREADME.md README.md
-
-#   update-code-coverage:
-#     runs-on: ubuntu-latest
-
     - name: Update project stats
+      if: matrix.php == '8.0'
       uses: leonstafford/a11y-friendly-badges@master
 
     - name: Commit files
@@ -75,17 +65,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
-
-#   update-code-coverage:
-#     runs-on: ubuntu-latest
-#     name: Update project stats
-#     steps:
-#     - uses: actions/checkout@master
-#     - name: Update version
-#       id: update-badges
-#       uses: leonstafford/a11y-friendly-badges@master
-#       with:
-#         update_commands: >
-#           echo "captured var: ${{ env.NEW_COVERAGE }}" &&
-#           sed -i "s/Coverage:/c\Coverage: ${{ env.NEW_COVERAGE }}" ./README.md &&
-#           cat ./README.md
