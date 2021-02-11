@@ -63,10 +63,6 @@ jobs:
 
     - name: Update project stats
       uses: leonstafford/a11y-friendly-badges@master
-      with:
-        update_commands: >
-          cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" | sed 's/\x1b\[[0-9;]*m//g' > NEWREADME.md &&
-          mv NEWREADME.md README.md
 
     - name: Commit files
       run: |
