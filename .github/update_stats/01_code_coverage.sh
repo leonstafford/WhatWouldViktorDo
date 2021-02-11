@@ -10,5 +10,3 @@ sed -i 's/Coverage:.*/Coverage: '"$NEW_COVERAGE"'/;s/\x1b\[[0-9;]*m//g' README.m
 # TODO: optionally check for changes, annotate with "increased/decreased" compared to last build, etc
 # or report when no project stats have changed, maybe exit code form this can determine if subsequent commit action takes place?
 
-# overwrite README with tempfile
-mv NEWREADME.md README.md
