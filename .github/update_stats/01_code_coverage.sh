@@ -8,7 +8,7 @@ echo "r1 $NEW_COVERAGE"
 
 
 # replace code coverage % in README into temp file
-cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE" | sed 's/\x1b\[[0-9;]*m//g' > NEWREADME.md
+cat README.md | sed "/Coverage:/ c Coverage: $NEW_COVERAGE is working" | sed 's/\x1b\[[0-9;]*m//g' > NEWREADME.md
 
 # overwrite README with tempfile
 mv NEWREADME.md README.md
