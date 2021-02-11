@@ -30,8 +30,6 @@ Add this package to your project.
 
 ## Usage
 
-This is not a replacement for other code quality tools, like 
-
 `php ./vendor/bin/whatwouldviktordo`
 
 or add as a Composer script:
